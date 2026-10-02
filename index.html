@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Микроавтобусы в наличии — Mercedes-Benz Sprinter / Vito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f0f2f5;
+    --surface:#ffffff;
+    --surface-2:#eef1f6;
+    --border:#dde2e8;
+    --text:#1c1e21;
+    --text-dim:#65676b;
+    --accent:#0668e1;
+    --accent-2:#0552b5;
+    --wa:#1fa855;
+    --wa-2:#178a45;
+    --kolesa:#1e74e8;
+    --kolesa-2:#155bc0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+  }
+  h1,h2{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    max-width:1180px;margin:0 auto;padding:10px 24px;gap:16px;
+  }
+  .brand{font-size:20px;font-weight:800;font-family:'Big Shoulders Display',sans-serif;flex-shrink:0;}
+  .brand span{color:var(--accent);}
+
+  .hero-left{display:flex;flex-direction:column;gap:18px;}
+  .hero-nav{display:flex;gap:10px;flex-wrap:wrap;padding-top:6px;}
+  .nav-hint{font-size:14px;font-weight:500;color:var(--text-dim);margin:0 0 -8px;}
+  .navicon{
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    text-decoration:none;color:var(--accent);
+    padding:8px 12px;border-radius:8px;flex-shrink:0;
+    background:var(--surface);border:1px solid #c9d6ea;
+    box-shadow:0 1px 2px rgba(20,24,28,0.06), 0 2px 6px rgba(6,104,225,0.08);
+    transition:background .15s, color .15s, border-color .15s, box-shadow .15s, transform .15s;
+    cursor:pointer;
+  }
+  .navicon svg{width:32px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round;}
+  .navicon span{font-size:11px;font-weight:600;white-space:nowrap;color:var(--text);transition:color .15s;}
+  .navicon:hover{
+    background:var(--accent);color:#fff;border-color:var(--accent);
+    transform:translateY(-2px);box-shadow:0 6px 14px rgba(6,104,225,0.28);
+  }
+  .navicon:hover span{color:#fff;}
+  .navicon:active{transform:translateY(0);box-shadow:0 1px 3px rgba(6,104,225,0.2);}
+  @media (prefers-reduced-motion: reduce){ .navicon, .navicon:hover{transform:none;} }
+
+  /* banner */
+  .banner{
+    position:relative;width:100%;height:340px;overflow:hidden;
+  }
+  .banner img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block;
+  }
+  .banner::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:140px;
+    background:linear-gradient(to bottom, rgba(240,242,245,0) 0%, var(--bg) 92%);
+  }
+
+  /* hero */
+  .hero{padding:0 24px 44px;background:var(--bg);}
+  .hero-inner{
+    max-width:1180px;margin:-64px auto 0;position:relative;z-index:2;
+    display:grid;grid-template-columns:0.8fr 1fr;gap:48px;align-items:center;
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:36px 40px;box-shadow:0 12px 32px rgba(20,24,28,0.08);
+  }
+  .hero h1{font-size:clamp(26px,4vw,46px);line-height:1.05;}
+
+  .diagram{width:100%;height:auto;max-width:100%;}
+  .diagram text{font-family:'IBM Plex Mono',monospace;fill:var(--text-dim);}
+  .diagram .code{fill:var(--accent-2);font-weight:600;}
+
+  /* section */
+  section.category{padding:56px 24px;border-bottom:1px solid var(--border);}
+  section.category:last-of-type{border-bottom:none;}
+  .cat-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px;}
+  .cat-head h2{font-size:clamp(24px,3vw,36px);}
+  .cat-head .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:20px;padding:4px 12px;flex-shrink:0;
+  }
+  .cat-note{color:var(--text-dim);font-size:14.5px;max-width:70ch;margin:6px 0 28px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .card .photo{
+    aspect-ratio:4/2.6;width:100%;object-fit:cover;background:var(--surface-2);
+    display:block;
+  }
+  .card-body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .card-title{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:20px;line-height:1.1;}
+  .specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text-dim);
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:12px 0;
+  }
+  .specs .v{color:var(--text);}
+  .card-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;flex-wrap:wrap;}
+  .price{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--accent-2);word-break:break-word;}
+  .btn{
+    font-size:13.5px;font-weight:600;text-decoration:none;
+    background:var(--accent);color:#ffffff;padding:9px 14px;border-radius:6px;
+    white-space:nowrap;transition:background .15s;border:none;cursor:pointer;
+    display:inline-block;text-align:center;
+  }
+  .btn:hover{background:var(--accent-2);}
+  /* card actions + YouTube */
+  .card-actions{display:flex;align-items:stretch;gap:8px;}
+  .card-actions .btn{display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 14px;}
+  .yt-btn{
+    width:38px;height:38px;border-radius:6px;flex-shrink:0;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:#fdecea;color:#e62117;border:1px solid #f8c9c4;text-decoration:none;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .yt-btn svg{width:20px;height:20px;}
+  .yt-btn:hover{background:#e62117;color:#fff;border-color:#e62117;}
+
+
+  footer{padding:32px 24px 48px;color:var(--text-dim);font-size:13px;}
+
+  /* modal */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(20,24,28,0.55);
+    z-index:100;align-items:center;justify-content:center;padding:20px;
+    backdrop-filter:blur(2px);
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--surface);border-radius:14px;max-width:640px;width:100%;
+    max-height:90vh;overflow-y:auto;position:relative;
+    box-shadow:0 24px 64px rgba(0,0,0,0.3);
+  }
+  .modal-close{
+    position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;
+    background:rgba(20,24,28,0.55);color:#fff;border:none;font-size:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;z-index:2;
+  }
+  .modal-close:hover{background:rgba(20,24,28,0.8);}
+  .modal-photo{width:100%;aspect-ratio:4/2.5;object-fit:cover;display:block;border-radius:14px 14px 0 0;}
+  .modal-body{padding:24px 28px 28px;}
+  .modal-title{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:26px;margin-bottom:4px;}
+  .modal-price{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--accent-2);margin-bottom:18px;word-break:break-word;}
+  .modal-specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;
+    font-size:14px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:16px 0;margin-bottom:16px;
+  }
+  .modal-specs .k{color:var(--text-dim);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+  .modal-specs .v{font-weight:500;}
+  body.modal-lock{overflow:hidden;}
+  /* contacts: header */
+  .header-contacts{display:flex;align-items:center;gap:10px;}
+  .header-phone{font-weight:600;font-size:15px;text-decoration:none;color:var(--text);white-space:nowrap;}
+  .header-phone:hover{color:var(--accent);}
+  .hbtn{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;white-space:nowrap;
+    transition:background .15s;
+  }
+  .hbtn svg{width:18px;height:18px;flex-shrink:0;}
+  .hbtn-wa{background:var(--wa);color:#fff;}
+  .hbtn-wa:hover{background:var(--wa-2);}
+  .hbtn-call{background:var(--surface-2);color:var(--text);border:1px solid var(--border);}
+  .hbtn-call:hover{background:var(--border);}
+  .hbtn-kolesa{background:var(--kolesa);color:#fff;}
+  .hbtn-kolesa:hover{background:var(--kolesa-2);}
+
+  /* contacts section */
+  .contacts{padding:56px 0;background:var(--surface);border-top:1px solid var(--border);}
+  .contacts-inner{
+    max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;
+  }
+  .contacts h2{font-size:clamp(28px,3.4vw,40px);line-height:1.05;margin-bottom:10px;}
+  .contacts p{color:var(--text-dim);margin:0;max-width:44ch;}
+  .contact-list{display:grid;gap:12px;}
+  .contact-item{
+    display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--text);
+    background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 18px;
+    transition:border-color .15s, background .15s;
+  }
+  .contact-item:hover{border-color:var(--accent);background:var(--surface);}
+  .contact-icon{
+    width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;
+  }
+  .contact-icon svg{width:22px;height:22px;}
+  .ci-phone{background:var(--accent);}
+  .ci-wa{background:var(--wa);}
+  .ci-yt{background:#e62117;}
+  .contact-label{font-size:12.5px;color:var(--text-dim);}
+  .contact-value{font-weight:600;font-size:16px;}
+
+  /* modal actions */
+  .modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;}
+  .modal-actions .hbtn{justify-content:center;padding:12px 14px;font-size:15px;}
+
+  /* floating WhatsApp (mobile) */
+  .wa-float{
+    display:none;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom, 0px));z-index:50;
+    width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;
+    align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.22);
+  }
+  .wa-float svg{width:28px;height:28px;}
+  body.modal-lock .wa-float{display:none !important;}
+
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  @media (max-width:820px){
+    .header-phone{display:none;}
+    .header-contacts .hbtn{padding:7px 10px;font-size:13px;}
+    .header-contacts .hbtn-call .hbtn-text{display:none;}
+    .contacts{padding:40px 0;}
+    .contacts-inner{grid-template-columns:1fr;gap:24px;padding:0 16px;}
+    .wa-float{display:flex;}
+    footer{padding-bottom:96px;}
+  }
+  @media (max-width:480px){
+    .modal-actions{grid-template-columns:1fr;}
+  }
+  @media (max-width:380px){
+    .header-contacts .hbtn-wa .hbtn-text{display:none;}
+  }
+
+  .banner.no-image{height:96px;}
+  .banner.no-image img{display:none;}
+  .noscript-note{max-width:1180px;margin:24px auto;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;}
+
+  @media (max-width:820px){
+    .hero-inner{grid-template-columns:1fr;gap:24px;margin-top:-40px;padding:24px 22px;}
+    .banner{height:200px;}
+    .header-inner{padding:8px 14px;gap:8px;}
+    .brand{font-size:16px;}
+    .hero-nav{gap:10px 8px;}
+    .navicon{padding:6px 8px;}
+    .navicon svg{width:26px;height:18px;}
+    .navicon span{font-size:9.5px;}
+    section.category{padding:36px 16px;}
+    .wrap{padding:0 16px;}
+    .grid{grid-template-columns:1fr;gap:14px;}
+    .cat-head h2{font-size:24px;}
+    .modal-specs{grid-template-columns:1fr 1fr;font-size:13px;}
+    .modal-body{padding:18px 18px 22px;}
+    .modal-title{font-size:21px;}
+    .modal-price{font-size:19px;}
+  }
+
+  @media (max-width:480px){
+    .banner{height:160px;}
+    .hero h1{font-size:23px;}
+    .hero-inner{padding:16px 14px;}
+    .modal-specs{grid-template-columns:1fr;}
+    .card-footer{flex-direction:column;align-items:stretch;}
+    .card-actions .btn{flex:1;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Vels.<span>Sprinter</span></div>
+    <div class="header-contacts">
+      <a class="header-phone" href="tel:+77013235598">+7 701 323 55 98</a>
+      <a class="hbtn hbtn-call" href="tel:+77013235598" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span class="hbtn-text">Позвонить</span></a>
+      <a class="hbtn hbtn-wa" href="https://wa.me/77013235598?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D0%B0%D0%B2%D1%82%D0%BE%D0%B1%D1%83%D1%81." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8s-.39-.12-.55.12-.63.8-.78.96-.29.19-.53.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.55-1.33-.76-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.1 3.65c1.53.66 2.13.72 2.9.6a2.5 2.5 0 0 0 1.63-1.15 2 2 0 0 0 .14-1.15c-.06-.1-.22-.16-.47-.28z"/></svg><span class="hbtn-text">WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Баннер: положите файл banner.jpg рядом с index.html. Если файла нет, блок просто станет узкой полосой. -->
+<div class="banner" id="banner">
+  <img src="banner.jpg" alt="Микроавтобусы Mercedes-Benz Sprinter на площадке" onerror="this.parentNode.classList.add('no-image')">
+</div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+    <h1>Микроавтобусы в наличии</h1>
+    <p class="nav-hint">Выберите тип кузова</p>
+    <nav class="hero-nav" aria-label="Типы кузова">
+
+
+      <a href="#l2h2" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="6" y="12" width="40" height="22" rx="2"/><path d="M46 34 L46 18 L56 18 L60 26 L60 34 Z"/><circle cx="18" cy="34" r="4.5"/><circle cx="50" cy="34" r="4.5"/></svg>
+        <span>Средние</span>
+      </a>
+      <a href="#l2h1" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="6" y="18" width="40" height="16" rx="2"/><path d="M46 34 L46 22 L56 22 L60 27 L60 34 Z"/><circle cx="18" cy="34" r="4.5"/><circle cx="50" cy="34" r="4.5"/></svg>
+        <span>Низкие</span>
+      </a>
+      <a href="#l3h2" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="3" y="12" width="46" height="22" rx="2"/><path d="M49 34 L49 18 L58 18 L61 26 L61 34 Z"/><circle cx="15" cy="34" r="4.5"/><circle cx="53" cy="34" r="4.5"/></svg>
+        <span>Макси</span>
+      </a>
+      <a href="#l4h2" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="1" y="12" width="50" height="22" rx="2"/><path d="M51 34 L51 18 L59 18 L62 26 L62 34 Z"/><circle cx="13" cy="34" r="4.5"/><circle cx="55" cy="34" r="4.5"/></svg>
+        <span>Супер макси</span>
+      </a>
+      <a href="#vito" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="10" y="16" width="34" height="18" rx="2"/><path d="M44 34 L44 20 L54 20 L58 27 L58 34 Z"/><circle cx="21" cy="34" r="4.5"/><circle cx="49" cy="34" r="4.5"/></svg>
+        <span>Vito</span>
+      </a>
+      <a href="#passenger" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="6" y="12" width="40" height="22" rx="2"/><line x1="20" y1="12" x2="20" y2="34"/><line x1="32" y1="12" x2="32" y2="34"/><path d="M46 34 L46 18 L56 18 L60 26 L60 34 Z"/><circle cx="18" cy="34" r="4.5"/><circle cx="50" cy="34" r="4.5"/></svg>
+        <span>Пассажирские</span>
+      </a>
+      <a href="#box" class="navicon">
+        <svg viewBox="0 0 64 40"><rect x="6" y="10" width="40" height="24" rx="1"/><line x1="6" y1="18" x2="46" y2="18"/><path d="M46 34 L46 18 L56 18 L60 26 L60 34 Z"/><circle cx="18" cy="34" r="4.5"/><circle cx="50" cy="34" r="4.5"/></svg>
+        <span>Будка</span>
+      </a>
+        </nav>
+    </div>
+    <svg class="diagram" viewBox="0 100 620 118" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="190" x2="610" y2="190" stroke="#dde2e8" stroke-width="1"/>
+      <g>
+        <rect x="30" y="140" width="70" height="50" rx="3" fill="none" stroke="#9aa3ad" stroke-width="1.5"/>
+        <path d="M100 190 L100 165 L120 165 L128 190 Z" fill="none" stroke="#9aa3ad" stroke-width="1.5"/>
+        <circle cx="50" cy="190" r="7" fill="#ffffff" stroke="#9aa3ad" stroke-width="1.5"/>
+        <circle cx="112" cy="190" r="7" fill="#ffffff" stroke="#9aa3ad" stroke-width="1.5"/>
+        <text x="65" y="210" font-size="11" text-anchor="middle">L2H1</text>
+      </g>
+      <g>
+        <rect x="150" y="115" width="80" height="75" rx="3" fill="none" stroke="#0668e1" stroke-width="2"/>
+        <path d="M230 190 L230 160 L252 160 L260 190 Z" fill="none" stroke="#0668e1" stroke-width="2"/>
+        <circle cx="172" cy="190" r="7" fill="#ffffff" stroke="#0668e1" stroke-width="2"/>
+        <circle cx="242" cy="190" r="7" fill="#ffffff" stroke="#0668e1" stroke-width="2"/>
+        <text x="190" y="210" font-size="11" text-anchor="middle" class="code">L2H2</text>
+      </g>
+      <g>
+        <rect x="285" y="115" width="110" height="75" rx="3" fill="none" stroke="#9aa3ad" stroke-width="1.5"/>
+        <path d="M395 190 L395 160 L417 160 L425 190 Z" fill="none" stroke="#9aa3ad" stroke-width="1.5"/>
+        <circle cx="307" cy="190" r="7" fill="#ffffff" stroke="#9aa3ad" stroke-width="1.5"/>
+        <circle cx="377" cy="190" r="7" fill="#ffffff" stroke="#9aa3ad" stroke-width="1.5"/>
+        <text x="340" y="210" font-size="11" text-anchor="middle">L3H2</text>
+      </g>
+      <g>
+        <rect x="450" y="115" width="130" height="75" rx="3" fill="none" stroke="#9aa3ad" stroke-width="1.5"/>
+        <path d="M580 190 L580 160 L602 160 L610 190 Z" fill="none" stroke="#9aa3ad" stroke-width="1.5"/>
+        <circle cx="472" cy="190" r="7" fill="#ffffff" stroke="#9aa3ad" stroke-width="1.5"/>
+        <circle cx="562" cy="190" r="7" fill="#ffffff" stroke="#9aa3ad" stroke-width="1.5"/>
+        <text x="515" y="210" font-size="11" text-anchor="middle">L4H2</text>
+      </g>
+      <text x="15" y="120" font-size="10">H2</text>
+      <text x="15" y="145" font-size="10">H1</text>
+      <line x1="12" y1="115" x2="12" y2="190" stroke="#dde2e8" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Каталог собирается автоматически из списка CATALOG в скрипте внизу страницы -->
+<main id="catalog"></main>
+<noscript>
+  <div class="noscript-note">Чтобы увидеть каталог, включите JavaScript в браузере.</div>
+</noscript>
+
+
+<section class="contacts" id="contacts">
+  <div class="contacts-inner">
+    <div>
+      <h2>Свяжитесь с нами</h2>
+      <p>Расскажем о машине подробнее, пришлём дополнительные фото и видео, договоримся об осмотре на площадке.</p>
+    </div>
+    <div class="contact-list">
+      <a class="contact-item" href="tel:+77013235598">
+        <span class="contact-icon ci-phone"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
+        <span><span class="contact-label">Телефон</span><br><span class="contact-value">+7 701 323 55 98</span></span>
+      </a>
+      <a class="contact-item" href="https://wa.me/77013235598?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D0%B0%D0%B2%D1%82%D0%BE%D0%B1%D1%83%D1%81." target="_blank" rel="noopener">
+        <span class="contact-icon ci-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8s-.39-.12-.55.12-.63.8-.78.96-.29.19-.53.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.55-1.33-.76-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.1 3.65c1.53.66 2.13.72 2.9.6a2.5 2.5 0 0 0 1.63-1.15 2 2 0 0 0 .14-1.15c-.06-.1-.22-.16-.47-.28z"/></svg></span>
+        <span><span class="contact-label">WhatsApp</span><br><span class="contact-value">Написать в WhatsApp</span></span>
+      </a>
+      <a class="contact-item" href="https://youtube.com/@bring_brick" target="_blank" rel="noopener">
+        <span class="contact-icon ci-yt"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></span>
+        <span><span class="contact-label">YouTube</span><br><span class="contact-value">Обзоры машин на канале @bring_brick</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 Vels.Sprinter. Все права защищены.
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="https://wa.me/77013235598?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D0%B0%D0%B2%D1%82%D0%BE%D0%B1%D1%83%D1%81." target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8s-.39-.12-.55.12-.63.8-.78.96-.29.19-.53.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.55-1.33-.76-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.1 3.65c1.53.66 2.13.72 2.9.6a2.5 2.5 0 0 0 1.63-1.15 2 2 0 0 0 .14-1.15c-.06-.1-.22-.16-.47-.28z"/></svg></a>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Закрыть">&times;</button>
+    <img class="modal-photo" id="modalPhoto" src="" alt="">
+    <div class="modal-body">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <div class="modal-actions">
+        <a class="hbtn hbtn-wa" id="modalWa" href="https://wa.me/77013235598" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8s-.39-.12-.55.12-.63.8-.78.96-.29.19-.53.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.55-1.33-.76-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.1 3.65c1.53.66 2.13.72 2.9.6a2.5 2.5 0 0 0 1.63-1.15 2 2 0 0 0 .14-1.15c-.06-.1-.22-.16-.47-.28z"/></svg><span>Спросить в WhatsApp</span></a>
+        <a class="hbtn hbtn-kolesa" id="modalKolesaLink" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>Объявление на Kolesa</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* =====================================================================
+     КАТАЛОГ — единственное место, где хранятся данные о машинах.
+     Чтобы добавить машину: скопируйте блок { ... } и поменяйте значения.
+     Чтобы убрать: удалите блок. Счётчики и карточки обновятся сами.
+     id — номер объявления на Kolesa.kz (из ссылки kolesa.kz/a/show/НОМЕР).
+     options — необязательное поле «Особенности».
+     video — необязательная ссылка на видеообзор этой машины на YouTube.
+     Фото: сайт берёт photos/НОМЕР.jpg. Если такого файла нет —
+     временно показывает фото из поля photo (с Kolesa), а если и его нет — заглушку.
+     ===================================================================== */
+  const CATALOG = [
+    {
+      id: "l2h2",
+      title: "Средние базы L2H2",
+      note: "Средняя длина базы, увеличенная высота крыши — самый ходовой вариант для города: заезжает в стандартные ворота, при этом внутри можно стоять в полный рост.",
+      cars: [
+        { id: "183748248", model: "Sprinter", year: 2021, price: 17500000, mileage: 238000, gearbox: "Механика", drive: "Задний", body: "L2H2",
+          photo: "https://kolesa-photos.kcdn.online/webp/21/212868b0-7c31-4382-9604-9e6c6c973abb/30-750x470.webp" },
+        { id: "215998476", model: "Sprinter", year: 2023, price: 20290000, mileage: 54518, gearbox: "Механика", drive: "Задний", body: "L2H2",
+          photo: "https://kolesa-photos.kcdn.online/webp/9b/9b9e1375-f131-4a62-81e0-a174a4dd6da7/8-750x470.webp" }
+      ]
+    },
+    {
+      id: "l2h1",
+      title: "Низкие базы L2H1",
+      note: "Та же средняя база, но пониженная крыша — ниже расход топлива и удобнее заезжать в подземные паркинги и низкие ворота.",
+      cars: [
+        { id: "196121408", model: "Sprinter", year: 2021, price: 16200000, mileage: 115000, gearbox: "Механика", drive: "Задний", body: "L2H1",
+          photo: "https://kolesa-photos.kcdn.online/webp/80/805cd92e-4b28-4662-bd8c-9f977e6a821b/6-750x470.webp" },
+        { id: "214335857", model: "Sprinter", year: 2022, price: 18200000, mileage: 254088, gearbox: "Механика", drive: "Задний", body: "L2H1",
+          options: "Камера 360°, плавающие сиденья, круиз-контроль",
+          photo: "https://kolesa-photos.kcdn.online/webp/e6/e6d4823a-4dd1-4a01-8359-a1504699c1f6/3-750x470.webp" }
+      ]
+    },
+    {
+      id: "l3h2",
+      title: "Макси базы L3H2",
+      note: "Удлинённая база и высокая крыша — максимум полезного объёма для перевозки груза, сохраняя один задний мост.",
+      cars: [
+        { id: "188941853", model: "Sprinter", year: 2021, price: 20300000, mileage: 151000, gearbox: "Механика", drive: "Задний", body: "L3H2",
+          photo: "https://kolesa-photos.kcdn.online/webp/dd/ddefe622-b59f-4faa-aa79-9ee8c873e433/1-750x470.webp" },
+        { id: "210705759", model: "Sprinter", year: 2023, price: 20200000, mileage: 166251, gearbox: "Механика", drive: "Задний", body: "L3H2",
+          photo: "https://kolesa-photos.kcdn.online/webp/54/542d76fe-ce5a-4dd6-99e9-a0fc0d8644d6/3-750x470.webp" }
+      ]
+    },
+    {
+      id: "l4h2",
+      title: "Супер макси XXL L4H2",
+      note: "Самая длинная база в линейке — для тех случаев, когда объёма L3 уже не хватает.",
+      cars: [
+        { id: "215292376", model: "Sprinter", year: 2022, price: 20990000, mileage: 285000, gearbox: "Механика", drive: "Задний", body: "L4H2 XXL",
+          photo: "https://kolesa-photos.kcdn.online/webp/5b/5b29909b-91a0-42de-abdd-a165efe6e610/2-750x470.webp" }
+      ]
+    },
+    {
+      id: "vito",
+      title: "Vito",
+      note: "Компактный Mercedes-Benz Vito — там, где не нужен полноразмерный Sprinter.",
+      cars: [
+        { id: "212431807", model: "Vito", year: 2022, price: 18200000, mileage: 135000, gearbox: "Автомат", drive: "Задний", body: "Минивэн",
+          photo: "https://kolesa-photos.kcdn.online/webp/46/46307b11-2880-4624-bad0-a12487fd4578/12-750x470.webp" }
+      ]
+    },
+    {
+      id: "passenger",
+      title: "Пассажирские",
+      note: "Комфортабельные пассажирские микроавтобусы Mercedes-Benz Sprinter для перевозок и трансферов.",
+      cars: [
+        { id: "220343567", model: "Sprinter", year: 2021, price: 30500000, mileage: 121000, gearbox: "Механика", drive: "Задний", body: "Пассажирский",
+          photo: "https://kolesa-photos.kcdn.online/webp/d3/d3ed0604-388c-480c-b3f1-a1caac2667dd/1-750x470.webp" },
+        { id: "194552525", model: "Sprinter", year: 2021, price: 33700000, mileage: 125000, gearbox: "Механика", drive: "Задний", body: "Пассажирский",
+          photo: "https://kolesa-photos.kcdn.online/webp/b7/b7aa0c07-94ac-4ccd-8df5-9f7380ad2930/3-750x470.webp" }
+      ]
+    },
+    {
+      id: "box",
+      title: "Будка 2 ската",
+      note: "Грузовые микроавтобусы с двускатной задней осью и прочным промтоварным кузовом-будкой.",
+      cars: [
+        { id: "223589184", model: "Sprinter", year: 2022, price: 23700000, mileage: 192000, gearbox: "Механика", drive: "Задний", body: "Будка 2 ската",
+          photo: "https://kolesa-photos.kcdn.online/webp/42/426058f1-f2a1-4da6-9fbe-a20bf5c2d417/1-750x470.webp" },
+        { id: "230775231", model: "Sprinter", year: 2022, price: 24900000, mileage: 170000, gearbox: "Автомат", drive: "Задний", body: "Будка 2 ската",
+          photo: "https://kolesa-photos.kcdn.online/webp/c7/c7101286-b07c-412b-8073-a2c5e9ccdef5/4-750x470.webp" }
+      ]
+    }
+  ];
+
+  /* ---------- вспомогательные функции ---------- */
+
+  // Заглушка, если фото не загрузилось (объявление снято, нет сети и т.п.)
+  const PHOTO_PLACEHOLDER = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260">' +
+    '<rect width="400" height="260" fill="#eef1f6"/>' +
+    '<g fill="none" stroke="#9aa3ad" stroke-width="4" stroke-linejoin="round">' +
+    '<rect x="110" y="95" width="130" height="70" rx="4"/>' +
+    '<path d="M240 165 L240 115 L272 115 L290 140 L290 165 Z"/>' +
+    '<circle cx="145" cy="165" r="12" fill="#eef1f6"/><circle cx="265" cy="165" r="12" fill="#eef1f6"/></g>' +
+    '<text x="200" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" fill="#65676b">Фото скоро появится</text>' +
+    '</svg>'
+  );
+
+  const fmt = n => n.toLocaleString('ru-RU').replace(/\u00a0|\u202f/g, ' ');
+  const formatPrice = n => fmt(n) + ' ₸';
+  const formatMileage = n => fmt(n) + ' км';
+  const carTitle = c => `Mercedes-Benz ${c.model}, ${c.year}`;
+  const kolesaUrl = c => `https://kolesa.kz/a/show/${c.id}`;
+  const localPhoto = c => `photos/${c.id}.jpg`;
+
+  // Контакты — меняются здесь
+  const WHATSAPP_NUMBER = "77013235598";
+  const YOUTUBE_CHANNEL = "https://youtube.com/@bring_brick";
+  // Если у машины есть своё видео (поле video), кнопка ведёт на него, иначе — на канал
+  const ytLink = c => c.video || YOUTUBE_CHANNEL;
+  // Ссылка в WhatsApp с готовым текстом про конкретную машину
+  const waLink = c => `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(
+    `Здравствуйте! Интересует Mercedes-Benz ${c.model} ${c.year} года (${c.body}) за ${formatPrice(c.price)}.\nСсылка: ${kolesaUrl(c)}`
+  );
+
+  function pluralCars(n) {
+    const m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return n + ' машина';
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return n + ' машины';
+    return n + ' машин';
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  }
+
+  /* ---------- сборка каталога ---------- */
+
+  const carsById = {};
+
+  function renderCard(c) {
+    const title = escapeHtml(carTitle(c));
+    return `
+      <div class="card">
+        <img class="photo" src="${localPhoto(c)}" data-fallback="${escapeHtml(c.photo || '')}" alt="${title}, ${escapeHtml(c.body)}" loading="lazy">
+        <div class="card-body">
+          <div class="card-title">${title}</div>
+          <div class="specs">
+            <div>Пробег <div class="v">${formatMileage(c.mileage)}</div></div>
+            <div>Коробка <div class="v">${escapeHtml(c.gearbox)}</div></div>
+            <div>Привод <div class="v">${escapeHtml(c.drive)}</div></div>
+            <div>Кузов <div class="v">${escapeHtml(c.body)}</div></div>
+          </div>
+          <div class="card-footer">
+            <div class="price">${formatPrice(c.price)}</div>
+            <div class="card-actions">
+              <button type="button" class="btn" data-car-id="${escapeHtml(c.id)}">Смотреть →</button>
+              <a class="yt-btn" href="${escapeHtml(ytLink(c))}" target="_blank" rel="noopener"
+                 title="${c.video ? 'Видеообзор этой машины' : 'Наш YouTube-канал'}"
+                 aria-label="${c.video ? 'Видеообзор этой машины на YouTube' : 'Наш канал на YouTube'}">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderCatalog() {
+    const html = CATALOG
+      .filter(cat => cat.cars.length > 0)
+      .map(cat => {
+        cat.cars.forEach(c => { carsById[c.id] = c; });
+        return `
+<section class="category" id="${cat.id}">
+  <div class="wrap">
+    <div class="cat-head">
+      <h2>${escapeHtml(cat.title)}</h2>
+      <span class="tag">${pluralCars(cat.cars.length)}</span>
+    </div>
+    <p class="cat-note">${escapeHtml(cat.note)}</p>
+    <div class="grid">${cat.cars.map(renderCard).join('')}
+    </div>
+  </div>
+</section>`;
+      }).join('');
+    document.getElementById('catalog').innerHTML = html;
+
+    // Прячем кнопки навигации для пустых категорий
+    document.querySelectorAll('.hero-nav a').forEach(a => {
+      const target = a.getAttribute('href').slice(1);
+      const cat = CATALOG.find(c => c.id === target);
+      if (!cat || cat.cars.length === 0) a.style.display = 'none';
+    });
+
+    // Если страницу открыли по ссылке с якорем (#l3h2), прокручиваем к разделу
+    if (location.hash) {
+      const el = document.getElementById(location.hash.slice(1));
+      if (el) el.scrollIntoView();
+    }
+  }
+
+  // Подмена битых фото на заглушку (ловим ошибки всех картинок на странице)
+  document.addEventListener('error', function (e) {
+    const img = e.target;
+    if (img.tagName !== 'IMG' || !(img.classList.contains('photo') || img.id === 'modalPhoto')) return;
+    const fallback = img.dataset.fallback;
+    if (fallback) {
+      img.dataset.fallback = '';
+      img.src = fallback;
+    } else if (img.src !== PHOTO_PLACEHOLDER) {
+      img.src = PHOTO_PLACEHOLDER;
+    }
+  }, true);
+
+  renderCatalog();
+
+  /* ---------- модальное окно ---------- */
+
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+  const modalPhoto = document.getElementById('modalPhoto');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalPrice = document.getElementById('modalPrice');
+  const modalSpecs = document.getElementById('modalSpecs');
+  const modalKolesaLink = document.getElementById('modalKolesaLink');
+  const modalWa = document.getElementById('modalWa');
+
+  function openModal(id) {
+    const car = carsById[id];
+    if (!car) return;
+
+    modalPhoto.dataset.fallback = car.photo || '';
+    modalPhoto.src = localPhoto(car);
+    modalPhoto.alt = carTitle(car);
+    modalTitle.textContent = carTitle(car);
+    modalPrice.textContent = formatPrice(car.price);
+
+    let specsHtml = `
+      <div><span class="k">Год выпуска</span><div class="v">${car.year}</div></div>
+      <div><span class="k">Пробег</span><div class="v">${formatMileage(car.mileage)}</div></div>
+      <div><span class="k">Коробка передач</span><div class="v">${escapeHtml(car.gearbox)}</div></div>
+      <div><span class="k">Привод</span><div class="v">${escapeHtml(car.drive)}</div></div>
+      <div><span class="k">Тип кузова</span><div class="v">${escapeHtml(car.body)}</div></div>
+    `;
+    if (car.options) {
+      specsHtml += `<div><span class="k">Особенности</span><div class="v">${escapeHtml(car.options)}</div></div>`;
+    }
+
+    modalSpecs.innerHTML = specsHtml;
+    modalKolesaLink.href = kolesaUrl(car);
+    modalWa.href = waLink(car);
+
+    overlay.classList.add('open');
+    document.body.classList.add('modal-lock');
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-lock');
+  }
+
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.btn');
+    if (btn && btn.dataset.carId) openModal(btn.dataset.carId);
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+</script>
+</body>
+</html>
